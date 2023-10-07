@@ -8,15 +8,16 @@
 </head>
 
 <body>
-    <div class="flex items-center justify-center h-screen bg-slate-300">
-        <div>
-            <h1 class="text-purple-900 text-6xl">
+    <x-notifications />
+    <livewire:form />
+
+    <wireui:scripts />
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+    {{-- <h1 class="text-purple-900 text-6xl">
                 Vamos contar?
-            </h1>
-            <br>
-            <livewire:contador />
-        </div>
-    </div>
+            </h1> --}}
+    {{-- <livewire:contador /> --}}
 </body>
 
 </html>

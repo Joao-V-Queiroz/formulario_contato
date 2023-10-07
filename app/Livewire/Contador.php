@@ -20,8 +20,8 @@ class Contador extends Component
         $this->count--;
     }
 
-    public function render()
-    {
-        return view('livewire.contador')->layout('layouts.app');
-    }
+    // public function render()
+    // {
+    //     return view('livewire.contador')->layout('layouts.app');
+    // }
 }
