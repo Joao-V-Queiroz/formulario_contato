@@ -1,22 +1,21 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ asset('js/cadastro-agendamento.js') }}"></script>
+    <title>Cadastro de Agendamento</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
 <body>
     <x-notifications />
-    <livewire:form />
-    <wireui:scripts />
+
+    {{ $slot }}
+
+    <livewire:cadastro-agendamento>
+
+    <livewire:scripts />
 
     <script src="//unpkg.com/alpinejs" defer></script>
-    {{-- <h1 class="text-purple-900 text-6xl">
-                Vamos contar?
-            </h1> --}}
-    {{-- <livewire:contador /> --}}
 </body>
-
 </html>
