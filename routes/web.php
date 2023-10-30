@@ -2,6 +2,7 @@
 
 use App\Livewire\Contador;
 use App\Livewire\Form;
+use App\Livewire\TesteComponent;
 use App\Livewire\CadastroAgendamento;
 use Illuminate\Support\Facades\Route;
 
@@ -10,5 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/form',Form::class);
+
+Route::get('/teste',TesteComponent::class);
 
 Route::get('/cadastro-agendamento', CadastroAgendamento::class);
