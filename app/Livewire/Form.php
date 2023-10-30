@@ -5,17 +5,21 @@ declare(strict_types=1);
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
 
 class Form extends Component
 {
     use Actions;
+    use WithFileUploads;
 
     public string $name = '';
 
     public string $email = '';
 
     public string $message = '';
+
+    public $file;
 
     protected array $rules = [
         'name' => ['required'],
@@ -35,12 +39,14 @@ class Form extends Component
     public function submit(): void
     {
         $this->validate();
-
-        //aqui fariamos o envio do email
-        //aqui salvariamos a mensagem no banco
-
-        $this->notification()->success('Parabéns','Contato enviado com sucesso!');
-        $this->reset('name','email','message');
+            $fileName = time() . '.' . $this->file->extension();
+            $file = $this->file->storeAs('photos', $fileName, 'uploads');
+            $fileUrl = config('app.url') . "/uploads/{$file}";
+            dump("Arquivo salvo com sucesso!" . $file);
+            dd("File Url: {$fileUrl}");
+        // Resto do seu código
+        $this->notification()->success('Parabéns', 'Contato enviado com sucesso!');
+        $this->reset('name', 'email', 'message');
 
     }
 

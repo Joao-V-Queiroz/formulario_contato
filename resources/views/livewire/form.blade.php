@@ -37,9 +37,17 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col mb-4">
+                <label for="file">Informe o seu arquivo de imagem</label>
+                <input type="file" wire:model="file">
+                @error('file')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="mb-4">
-                <button class="px-4 py-2 bg-green-500 hover:bg-green-500 rounded-full text-white"
-                    type="submit">Enviar Contato</button>
+                <button class="px-4 py-2 bg-green-500 hover:bg-green-500 rounded-full text-white" type="submit">Enviar
+                    Contato</button>
             </div>
         </form>
     </div>
