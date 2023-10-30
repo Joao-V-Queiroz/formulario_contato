@@ -14,5 +14,8 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('12345'),
         ]);
+        $this->call([
+            CustomerSeeder::class,
+        ]);
     }
 }
