@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Contador;
+use App\Livewire\CustomerAdd;
 use App\Livewire\Form;
 use App\Livewire\TesteComponent;
 use App\Livewire\CadastroAgendamento;
@@ -11,7 +12,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/clientes',CustomerList::class);
+//clientes routes
+Route::get('/clientes',CustomerList::class)->name('clientes.listar');
+Route::get('/clientes/adicionar', CustomerAdd::class)->name('clientes.adicionar');
 
 Route::get('/form',Form::class);
 

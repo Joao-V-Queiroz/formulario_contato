@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         [x-cloak] {
-            display: none !important;
+            display: none;
         }
     </style>
     @filamentStyles
@@ -14,19 +14,11 @@
 </head>
 
 <body>
-    <x-notifications />
-    {{-- {{ $slot }} --}}
-    {{-- <livewire:form /> --}}
-    <wireui:scripts />
-    @filamentScripts
-    @vite('resources/js/app.js')
-    @livewire('customer-list')
-
-    <script src="//unpkg.com/alpinejs" defer></script>
-    {{-- <h1 class="text-purple-900 text-6xl">
-                Vamos contar?
-            </h1> --}}
-    {{-- <livewire:contador /> --}}
+    @if (\Illuminate\Support\Facades\Route::currentRouteName() === 'clientes.adicionar')
+        @livewire('customer-add')
+    @elseif(\Illuminate\Support\Facades\Route::currentRouteName() === 'clientes.listar')
+        @livewire('customer-list')
+    @endif
 </body>
 
 </html>
