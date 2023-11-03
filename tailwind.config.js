@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+const colors = require('tailwindcss/colors');
+
 module.exports = {
     presets: [
         require('./vendor/wireui/wireui/tailwind.config.js')
@@ -10,6 +12,9 @@ module.exports = {
         "./resources/**/*.vue",
         './vendor/wireui/wireui/resources/**/*.blade.php',
         './vendor/wireui/wireui/ts/**/*.ts',
+        './app/Filament/**/*.php',
+        './resources/views/filament/**/*.blade.php',
+        './vendor/filament/**/*.blade.php',
         './vendor/wireui/wireui/src/View/**/*.php'
     ],
     theme: {

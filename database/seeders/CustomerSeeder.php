@@ -9,6 +9,6 @@ class CustomerSeeder extends Seeder
 {
     public function run(): void
     {
-        \App\Models\Customer::factory()->count(10)->create();
+        \App\Models\Customer::factory()->count(5)->create();
     }
 }

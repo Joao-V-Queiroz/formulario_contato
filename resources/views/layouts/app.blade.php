@@ -4,13 +4,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    @filamentStyles
+    @vite('resources/css/app.css')
 </head>
 
 <body>
     <x-notifications />
-    <livewire:form />
+    {{-- {{ $slot }} --}}
+    {{-- <livewire:form /> --}}
     <wireui:scripts />
+    @filamentScripts
+    @vite('resources/js/app.js')
+    @livewire('customer-list')
 
     <script src="//unpkg.com/alpinejs" defer></script>
     {{-- <h1 class="text-purple-900 text-6xl">
