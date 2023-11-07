@@ -45,6 +45,11 @@ class CustomerList extends Component implements HasForms, HasTable
 				CreateAction::make(),
 			]);
     }
+
+    public function adicionar()
+    {
+        return redirect()->route('clientes.adicionar');
+    }
     public function render()
     {
         return view('livewire.customer-list')->layout('layouts.app');

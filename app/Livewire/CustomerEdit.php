@@ -67,6 +67,11 @@ class CustomerEdit extends Component
         return null;
     }
 
+    public function voltar()
+    {
+        return redirect()->route('clientes.listar');
+    }
+
     public function excluir()
     {
         $this->customer->delete();

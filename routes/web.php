@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\Category\CategoryAdd;
+use App\Livewire\Category\CategoryEdit;
+use App\Livewire\Category\CategoryList;
 use App\Livewire\Contador;
 use App\Livewire\CustomerAdd;
 use App\Livewire\CustomerEdit;
@@ -17,6 +20,11 @@ Route::get('/', function () {
 Route::get('/clientes',CustomerList::class)->name('clientes.listar');
 Route::get('/clientes/adicionar', CustomerAdd::class)->name('clientes.adicionar');
 Route::get('/clientes/editar/{id}', CustomerEdit::class)->name('clientes.editar');
+
+//category routes
+Route::get('/category', CategoryList::class)->name('category.listar');
+Route::get('/category/add', CategoryAdd::class)->name('category.adicionar');
+Route::get('/category/edit/{id}', CategoryEdit::class)->name('category.editar');
 
 Route::get('/form',Form::class);
 
