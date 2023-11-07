@@ -27,6 +27,11 @@ class CategoryAdd extends Component
         $this->name = '';
         return redirect()->route('category.listar');
     }
+
+    public function voltar()
+    {
+        return redirect()->route('category.listar');
+    }
     public function render()
     {
         return view('livewire.category.category-add')->layout('layouts.app');

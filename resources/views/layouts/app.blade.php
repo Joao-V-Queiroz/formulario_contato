@@ -31,6 +31,15 @@
         @livewire('category.category-edit', ['id' => Route::current()->parameter('id')])
     @endif
 
+    {{-- Routes para produtos --}}
+    @if (Route::currentRouteName() === 'product.adicionar')
+        @livewire('product.product-add')
+    @elseif(Route::currentRouteName() === 'product.listar')
+        @livewire('product.product-list')
+    @elseif(Route::currentRouteName() === 'product.editar')
+        @livewire('product.product-edit', ['id' => Route::current()->parameter('id')])
+    @endif
+
 </body>
 
 </html>

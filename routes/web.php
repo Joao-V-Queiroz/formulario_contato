@@ -3,6 +3,9 @@
 use App\Livewire\Category\CategoryAdd;
 use App\Livewire\Category\CategoryEdit;
 use App\Livewire\Category\CategoryList;
+use App\Livewire\Product\ProductEdit;
+use App\Livewire\Product\ProductList;
+use App\Livewire\Product\ProductAdd;
 use App\Livewire\Contador;
 use App\Livewire\CustomerAdd;
 use App\Livewire\CustomerEdit;
@@ -25,6 +28,12 @@ Route::get('/clientes/editar/{id}', CustomerEdit::class)->name('clientes.editar'
 Route::get('/category', CategoryList::class)->name('category.listar');
 Route::get('/category/add', CategoryAdd::class)->name('category.adicionar');
 Route::get('/category/edit/{id}', CategoryEdit::class)->name('category.editar');
+
+//products routes
+Route::get('/product', ProductList::class)->name('product.listar');
+Route::get('/product/add', ProductAdd::class)->name('product.adicionar');
+Route::get('/product/edit/{id}', ProductEdit::class)->name('product.editar');
+
 
 Route::get('/form',Form::class);
 
