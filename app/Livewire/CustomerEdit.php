@@ -67,6 +67,12 @@ class CustomerEdit extends Component
         return null;
     }
 
+    public function excluir()
+    {
+        $this->customer->delete();
+        return redirect()->route('clientes.listar');
+    }
+
     public function mount($id): void
     {
         $this->customer = Customer::find($id);
