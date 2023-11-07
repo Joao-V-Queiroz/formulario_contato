@@ -14,10 +14,12 @@
 </head>
 
 <body>
-    @if (\Illuminate\Support\Facades\Route::currentRouteName() === 'clientes.adicionar')
+    @if (Route::currentRouteName() === 'clientes.adicionar')
         @livewire('customer-add')
-    @elseif(\Illuminate\Support\Facades\Route::currentRouteName() === 'clientes.listar')
+    @elseif(Route::currentRouteName() === 'clientes.listar')
         @livewire('customer-list')
+    @elseif(Route::currentRouteName() === 'clientes.editar')
+        @livewire('customer-edit', ['id' => Route::current()->parameter('id')])
     @endif
 </body>
 

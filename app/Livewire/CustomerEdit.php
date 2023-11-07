@@ -2,20 +2,20 @@
 
 namespace App\Livewire;
 
-use App\Models\Customer;
 use Livewire\Component;
-use WireUi\Traits\Actions;
+use App\Models\Customer;
 use Illuminate\Support\Carbon;
-class CustomerAdd extends Component
-{
-    use Actions;
-    public String $name = '';
-    public String $email = '';
-    public String $document = '';
-    public String $birthdate = '';
-    public string $social_link = '';
 
-    public array $rules = [
+class CustomerEdit extends Component
+{
+    public $customer;
+     public String $name = '';
+     public String $email = '';
+     public String $document = '';
+     public ?String $birthdate = '';
+     public ?String $social_link = '';
+
+     public array $rules = [
         'name' => ['required'],
         'email' => ['required', 'email'],
         'document' => ['required', 'min:11'],
@@ -33,11 +33,15 @@ class CustomerAdd extends Component
         'social_link.required' => 'O campo link social é obrigatório',
         'social_link.url' => 'Link social inválido',
     ];
+
     public function submit()
     {
         $this->validate();
         $birthdate = $this->getBirthDate();
-        Customer::create([
+        Customer::updateOrCreate(
+         [
+            'email' => $this->email,
+         ],[
             'name' => $this->name,
             'email' => $this->email,
             'document' => $this->document,
@@ -47,7 +51,6 @@ class CustomerAdd extends Component
         $this->reset();
         return redirect()->route('clientes.listar');
     }
-
     private function getBirthDate(): ?Carbon
     {
         if(is_null($this->birthdate)){
@@ -56,12 +59,26 @@ class CustomerAdd extends Component
          return Carbon::createFromFormat('d/m/Y', $this->birthdate);
     }
 
-    public function voltar()
+    private function getBrazilianBirthDate(): ?Carbon
     {
-        return redirect()->route('clientes.listar');
+        if (filled($this->customer->birthdate)) {
+            return Carbon::createFromFormat('Y-m-d', $this->customer->birthdate);
+        }
+        return null;
+    }
+
+    public function mount($id): void
+    {
+        $this->customer = Customer::find($id);
+        $brazilianBirthDate = $this->getBrazilianBirthDate()?->format('d/m/Y');
+        $this->name = $this->customer->name;
+        $this->email = $this->customer->email;
+        $this->document = $this->customer->document;
+        $this->birthdate = $brazilianBirthDate;
+        $this->social_link = $this->customer->social_link;
     }
     public function render()
     {
-        return view('livewire.customer-add')->layout('layouts.app');
+        return view('livewire.customer-edit')->extends('layouts.app');
     }
 }
